@@ -93,7 +93,7 @@ def index():
     if request.method == 'POST':
         question = request.form['question']
         # Generar el embedding de la pregunta
-        embedding, error = generar_embedding2(question)
+        embedding = generar_embedding2(question)
         if embedding:
             
             # Conectar a la instancia de Weaviate
@@ -234,11 +234,11 @@ def index():
             <textarea id="question" name="question" rows="10" cols="50" maxlength="800"></textarea><br><br>
             <input type="submit" value="Enviar">
         </form>
-        {% if answer1 %}
+        {% if answer 1 %}
             <h2>Standard Answer:</h2>
             <p>{{ answer1 }}</p>
         {% endif %}
-        {% if answer2 %}
+        {% if answer 2 %}
             <h2>Trustworthy Answer:</h2>
             <p>{{ answer2 }}</p>
         {% endif %}
