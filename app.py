@@ -234,11 +234,11 @@ def index():
             <textarea id="question" name="question" rows="10" cols="50" maxlength="800"></textarea><br><br>
             <input type="submit" value="Enviar">
         </form>
-        {% if answer 1 %}
+        {% if answer1 %}
             <h2>Standard Answer:</h2>
             <p>{{ answer1 }}</p>
         {% endif %}
-        {% if answer 2 %}
+        {% if answer2 %}
             <h2>Trustworthy Answer:</h2>
             <p>{{ answer2 }}</p>
         {% endif %}
