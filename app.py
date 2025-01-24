@@ -2,7 +2,7 @@ from flask import Flask, request, render_template_string, redirect, url_for, ses
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from openai import OpenAIError, AzureOpenAI 
+from openai
 import logging
 import weaviate
 import requests
@@ -15,32 +15,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
-client = OpenAI(
-    api_key="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"
-)
-
-
-clientchat = AzureOpenAI(
-  azure_endpoint = "https://euserv4chatfinalization.openai.azure.com/", 
-  api_key = "KLuw7NzikQIXxBXLcVJtfecbCTat2SS9J4pz0hCHf8KRenLvzoR3JQQJ99BAACfhMk5XJ3w3AAABACOG34Ko",  
-  api_version = "2024-02-01"
-)
-
-def generar_embedding(pregunta):
-    try:
-        response = client.embeddings.create(
-            input=pregunta,
-            model="embedding"  # Usa el nombre del modelo que has desplegado
-        )
-        embedding = response['data'][0]['embedding']  
-
-        return embedding, None
-    except OpenAIError as e:
-        # Captura errores específicos de OpenAI
-        return None, f"OpenAIError: {str(e)}"
-    except Exception as e:
-        # Captura cualquier otro tipo de error
-        return None, str(e)
+openai.api_key = "sk-proj-H--geGUqo1k2rIPFU_G0tg9uoXuqNQ_Wu3kJl4yMGCGuHXuCfqrJ4koQRdS9UKT3BlbkFJB4s30HTCqTAOJBU3g9-QhNedsEkpUfJ0_CkDeni2USGEdPpT9GA8PZef9VPNR3yrYR7-42tCsA"
 
 def generar_embedding2(pregunta):
     
@@ -87,22 +62,21 @@ def login():
             session['username'] = username
             return redirect(url_for('index'))
     return render_template_string('''
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-    </head>
-    <body>
-        <form method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-    </body>
-    </html>
-    ''')
+        <!doctype html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Login</title>
+        </head>
+        <body>
+            <form method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </body>
+        </html>''')
 
 @app.route('/logout')
 def logout():
@@ -191,7 +165,7 @@ def index():
 
             
         # Enviar el prompt al modelo de OpenAI
-            response1 = client.chat.completions.create(
+            response1 = openai.ChatCompletion.create(
                 model="gpt-4o-mini",
                 store=False,
                 messages=[
