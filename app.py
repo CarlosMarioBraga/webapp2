@@ -21,8 +21,9 @@ def generar_embedding2(pregunta):
     
     url = "http://50.85.209.27:8080/get_embedding"
     data = {"text": pregunta}
+    headers = {"Content-Type": "application/json"}
 
-    response = requests.post(url, json=data)
+    response = requests.post(url, json=data, headers=headers)
 
     if response.status_code == 200:
         return response.json().get('embedding')
