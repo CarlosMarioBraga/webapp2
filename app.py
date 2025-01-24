@@ -104,49 +104,7 @@ def index():
                 "certainty": 0.7  # Ajusta este valor según tus necesidades
             }
             result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { ... on Document { title author publicationDate identifier documentType language publisher rights } }"]).with_near_vector(near_vector).do()
-            """
-            result = {
-                      "data": {
-                          "Get": {
-                              "Chunk": [
-                                  {
-                                      "content": "Un dedo es una de las extremidades de la mano o del pie.",
-                                      "pageNumber": 15,
-                                      "embeddingModel": "model_v1",
-                                      "embeddingDate": "2025-01-07",
-                                      "document": {
-                                          "title": "Anatomía Humana",
-                                          "author": "Dr. Juan Pérez",
-                                          "publicationDate": "2023-05-10",
-                                          "identifier": "ISBN1234567890",
-                                          "documentType": "Libro",
-                                          "language": "es",
-                                          "publisher": "Editorial Salud",
-                                          "rights": "Todos los derechos reservados"
-                                      }
-                                  },
-                                  {
-                                      "content": "Los dedos son esenciales para la manipulación de objetos.",
-                                      "pageNumber": 22,
-                                      "embeddingModel": "model_v1",
-                                      "embeddingDate": "2025-01-07",
-                                      "document": {
-                                          "title": "Fisiología del Movimiento",
-                                          "author": "Dra. María López",
-                                          "publicationDate": "2022-11-15",
-                                          "identifier": "ISBN0987654321",
-                                          "documentType": "Libro",
-                                          "language": "es",
-                                          "publisher": "Editorial Ciencia",
-                                          "rights": "Todos los derechos reservados"
-                                      }
-                                  }
-                              ]
-                          }
-                      }
-                  }
-            """
-                  
+                      
             # Construir la variable prompt
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
             
@@ -234,11 +192,11 @@ def index():
             <textarea id="question" name="question" rows="10" cols="50" maxlength="800"></textarea><br><br>
             <input type="submit" value="Enviar">
         </form>
-        {% if answer 1 %}
+        {% if answer1 %}
             <h2>Standard Answer:</h2>
             <p>{{ answer1 }}</p>
         {% endif %}
-        {% if answer 2 %}
+        {% if answer2 %}
             <h2>Trustworthy Answer:</h2>
             <p>{{ answer2 }}</p>
         {% endif %}
