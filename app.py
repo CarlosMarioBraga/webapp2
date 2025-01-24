@@ -216,10 +216,10 @@ def index():
                 stop=["\n"],
                 temperature=0.5
             )
-    # Imprimir la respuesta generada
-
-    answer1 = response1.choices[0].message.content
-    answer2 = response1.choices[0].message.content
+        # Imprimir la respuesta generada
+        answer1 = response1.choices[0].message.content
+        answer2 = response2.choices[0].message.content
+        
     return render_template_string('''
     <!doctype html>
     <html lang="en">
