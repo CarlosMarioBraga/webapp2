@@ -193,7 +193,7 @@ def index():
         # Enviar el prompt al modelo de OpenAI
             response1 = client.chat.completions.create(
                 model="gpt-4o-mini",
-  	          	store=False,
+                store=False,
                 messages=[
                     {"role": "system", "content": "You are a useful assistant that adheres to ethical principles and communicate in a formal and friendly tone in the same language of the question."},
                     {"role": "user", "content": prompt}
@@ -208,7 +208,7 @@ def index():
    	    # Enviar el prompt al modelo de OpenAI
             response2 = openai.ChatCompletion.create(
                 model="gpt-4o-mini",
-  	          	store=False,
+                store=False,
                 messages=[
                     {
                         "role": "system",
