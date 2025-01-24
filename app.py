@@ -97,7 +97,7 @@ def index():
         if embedding:
             
             # Conectar a la instancia de Weaviate
-            bbddclient = weaviate.Client("http://50.85.209.27:8080")
+            bbddclient = weaviate.Client("http://50.85.209.27:8081")
             # Realizar una consulta a Weaviate para obtener los chunks más cercanos
             near_vector = {
                 "vector": embedding,
