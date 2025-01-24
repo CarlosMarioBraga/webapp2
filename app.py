@@ -94,17 +94,19 @@ def index():
         question = request.form['question']
         # Generar el embedding de la pregunta
         embedding = generar_embedding2(question)
+        logger.info("Embedding Generado")
         if embedding:
             
             # Conectar a la instancia de Weaviate
             bbddclient = weaviate.Client("http://50.85.209.27:8081")
             # Realizar una consulta a Weaviate para obtener los chunks más cercanos
+            logger.info("Lanzamos consulta a Weaviate")
             near_vector = {
                 "vector": embedding,
                 "certainty": 0.7  # Ajusta este valor según tus necesidades
             }
             result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { ... on Document { title author publicationDate identifier documentType language publisher rights } }"]).with_near_vector(near_vector).do()
-                      
+            logger.info("Recibimos repuesta de weaviate e iniciamos la generación del prompt")          
             # Construir la variable prompt
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
             
@@ -120,9 +122,10 @@ def index():
                 rights = document['rights']
                 
                 prompt += f"- {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
-
+                logger.info("Prompt Construido")
             
         # Enviar el prompt al modelo de OpenAI
+            logger.info("Llamamos a openAI con la llamada standard")
             response1 = openai.ChatCompletion.create(
                 model="gpt-4o-mini",
                 store=False,
@@ -138,6 +141,7 @@ def index():
 
 
    	    # Enviar el prompt al modelo de OpenAI
+            logger.info("Llamamos a openAI con la llamada Trust")
             response2 = openai.ChatCompletion.create(
                 model="gpt-4o-mini",
                 store=False,
@@ -175,6 +179,7 @@ def index():
                 temperature=0.5
             )
         # Imprimir la respuesta generada
+        logger.info("Iniciamos la impresión de las preguntas")
         answer1 = response1.choices[0].message.content
         answer2 = response2.choices[0].message.content
         
