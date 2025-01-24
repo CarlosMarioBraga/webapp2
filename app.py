@@ -2,7 +2,7 @@ from flask import Flask, request, render_template_string, redirect, url_for, ses
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from openai
+import openai
 import logging
 import weaviate
 import requests
