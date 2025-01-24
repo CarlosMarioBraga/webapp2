@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
 client = OpenAI(
-  api_key="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"
+    api_key="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"
 )
 
 
