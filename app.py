@@ -111,16 +111,19 @@ def index():
             # Construir la variable prompt
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
             
-            # Iterar sobre los chunks en el resultado y agregar la información relevante al prompt
-            for chunk in result['data']['Get']['Chunk']:
-                content = chunk['content']
-                page_number = chunk['pageNumber']
-                embedding_date = chunk['embeddingDate']
-                document = chunk['document']
-                title = document['title']
-                author = document['author']
-                publication_date = document['publicationDate']
-                rights = document['rights']
+            chunks = result.get("data", {}).get("Get", {}).get("Chunk", [])
+
+            # Iterar sobre los chunks y extraer información
+            for chunk in chunks:
+                content = chunk.get("content")
+                page_number = chunk.get("pageNumber")
+                embedding_date = chunk.get("embeddingDate")
+                document = chunk.get("document", {})
+
+                title = document.get("title")
+                author = document.get("author")
+                publication_date = document.get("publicationDate")
+                rights = document.get("rights")
                 
                 prompt += f"- {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
                 logger.info("Prompt Construido")
