@@ -25,11 +25,11 @@ secret_name = "openai"
 credential = DefaultAzureCredential()
 
 # Crear cliente del Key Vault
-client = SecretClient(vault_url=key_vault_url, credential=credential)
+client_secret = SecretClient(vault_url=key_vault_url, credential=credential)
 
 # Obtener el secreto
 try:
-    secret = client.get_secret(secret_name)
+    secret = client_secret.get_secret(secret_name)
     print(f"El valor del secreto '{secret_name}' es: {secret.value}")
 except Exception as e:
     print(f"Error al obtener el secreto: {e}")
