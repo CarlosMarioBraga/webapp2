@@ -158,6 +158,7 @@ def index():
                 ],
                 max_tokens=600,
                 n=1,
+                stop=["\n"],
                 temperature=0.5
             )
 
@@ -197,54 +198,44 @@ def index():
                 ],
                 max_tokens=600,
                 n=1,
+                stop=["\n"],
                 temperature=0.5
             )
         # Imprimir la respuesta generada
         logger.info("Iniciamos la impresión de las preguntas")
-        try:
-            answer1 = response1.choices[0].message.content if response1 and response1.choices else "No response received."
-            answer2 = response2.choices[0].message.content if response2 and response2.choices else "No response received."
-        except Exception as e:
-            logger.error(f"Error al obtener respuestas de OpenAI: {str(e)}")
-            answer1, answer2 = "Error al obtener respuesta", "Error al obtener respuesta"
-
-    logger.error(f"Error en render_template_string: {str(e)}")
+        answer1 = response1.choices[0].message.content
+        answer2 = response2.choices[0].message.content
         
-    try:
-        return render_template_string('''
-        <!doctype html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <title>TRUSTWORTHY RAG</title>
-        </head>
-        <body>
-            <h1>TRUSTWORTHY RAG</h1>
-            <form method="post">
-                <label for="question">Write your question:</label><br><br>
-                <textarea id="question" name="question" rows="10" cols="50" maxlength="800"></textarea><br><br>
-                <input type="submit" value="Enviar">
-            </form>
-            {% if answer1 %}
-                <h2>Standard Answer:</h2>
-                <p>{{ answer1 | safe }}</p>
-            {% endif %}
-            {% if answer2 %}
-                <h2>Trustworthy Answer:</h2>
-                <p>{{ answer2 | safe }}</p>
-            {% endif %}
-            {% if error %}
-                <h2>Error:</h2>
-                <p>{{ error }}</p>
-            {% endif %}
-            <a href="{{ url_for('logout') }}">Logout</a>
-        </body>
-        </html>
-        ''', answer1=answer1, answer2=answer2, error=None)
-except Exception as e:
-       logger.error(f"Error al renderizar la plantilla: {str(e)}")
-       return f"Error interno del servidor: {str(e)}", 500
+    return render_template_string('''
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TRUSTWORTHY RAG</title>
+    </head>
+    <body>
+        <h1>TRUSTWORTHY RAG</h1>
+        <form method="post">
+            <label for="question">Write your question:</label><br><br>
+            <textarea id="question" name="question" rows="10" cols="50" maxlength="800"></textarea><br><br>
+            <input type="submit" value="Enviar">
+        </form>
+        {% if answer1 %}
+            <h2>Standard Answer:</h2>
+            <p>{{ answer1 }}</p>
+        {% endif %}
+        {% if answer2 %}
+            <h2>Trustworthy Answer:</h2>
+            <p>{{ answer2 }}</p>
+        {% endif %}
+        {% if error %}
+            <h2>Error:</h2>
+            <p>{{ error }}</p>
+        {% endif %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </body>
+    </html>
+    ''', answer1=answer1, answer2=answer2, error=error)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
