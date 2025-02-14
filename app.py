@@ -2,7 +2,7 @@ from flask import Flask, request, render_template_string, redirect, url_for, ses
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import openai
+from openai import OpenAI
 import logging
 import weaviate
 import requests
@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
-openai.api_key = "sk-proj-H--geGUqo1k2rIPFU_G0tg9uoXuqNQ_Wu3kJl4yMGCGuHXuCfqrJ4koQRdS9UKT3BlbkFJB4s30HTCqTAOJBU3g9-QhNedsEkpUfJ0_CkDeni2USGEdPpT9GA8PZef9VPNR3yrYR7-42tCsA"
+client=OpemAI(api_key = 'sk-proj-H--geGUqo1k2rIPFU_G0tg9uoXuqNQ_Wu3kJl4yMGCGuHXuCfqrJ4koQRdS9UKT3BlbkFJB4s30HTCqTAOJBU3g9-QhNedsEkpUfJ0_CkDeni2USGEdPpT9GA8PZef9VPNR3yrYR7-42tCsA')
 
 def generar_embedding2(pregunta):
     
@@ -130,7 +130,7 @@ def index():
             
         # Enviar el prompt al modelo de OpenAI
             logger.info("Llamamos a openAI con la llamada standard")
-            response1 = openai.ChatCompletion.create(
+            response1 = client.chat.completions.create(
                 model="gpt-4o-mini",
                 store=False,
                 messages=[
@@ -146,7 +146,7 @@ def index():
 
    	    # Enviar el prompt al modelo de OpenAI
             logger.info("Llamamos a openAI con la llamada Trust")
-            response2 = openai.ChatCompletion.create(
+            response2 = client.chat.completions.create(
                 model="gpt-4o-mini",
                 store=False,
                 messages=[
