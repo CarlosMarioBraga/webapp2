@@ -1,6 +1,6 @@
 Flask==2.2.2
 SQLAlchemy==1.4.41
 Werkzeug==2.2.2
-openai==0.28
+openai>=1.36.0
 weaviate-client==3.26.7
 requests>=2.32.2,<3.0.0
