@@ -6,6 +6,8 @@ from openai import OpenAI
 import logging
 import weaviate
 import requests
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
 
 
 app = Flask(__name__)
@@ -15,7 +17,25 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
-client = OpenAI(api_key="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")
+# URL del Key Vault
+key_vault_url = "https://almacenrag.vault.azure.net"
+secret_name = "openai"
+
+# Autenticación (usa DefaultAzureCredential, compatible con múltiples métodos de autenticación)
+credential = DefaultAzureCredential()
+
+# Crear cliente del Key Vault
+client = SecretClient(vault_url=key_vault_url, credential=credential)
+
+# Obtener el secreto
+try:
+    secret = client.get_secret(secret_name)
+    print(f"El valor del secreto '{secret_name}' es: {secret.value}")
+except Exception as e:
+    print(f"Error al obtener el secreto: {e}")
+
+client = OpenAI(api_key=secret.value)
+
 def generar_embedding2(pregunta):
     
     url = "http://50.85.209.27:8080/get_embedding"
