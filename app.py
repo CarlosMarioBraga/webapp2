@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="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")
 def generar_embedding2(pregunta):
     
     url = "http://50.85.209.27:8080/get_embedding"
