@@ -158,7 +158,6 @@ def index():
                 ],
                 max_tokens=600,
                 n=1,
-                stop=["\n"],
                 temperature=0.5
             )
 
@@ -198,7 +197,6 @@ def index():
                 ],
                 max_tokens=600,
                 n=1,
-                stop=["\n"],
                 temperature=0.5
             )
         # Imprimir la respuesta generada
