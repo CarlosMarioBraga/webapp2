@@ -107,7 +107,8 @@ def logout():
 def index():
     if 'username' not in session:
         return redirect(url_for('login'))
-    answer = None
+    answer1 = None
+    answer2 = None
     error = None
     
     if request.method == 'POST':
