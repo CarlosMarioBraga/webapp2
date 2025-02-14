@@ -235,7 +235,7 @@ def index():
         <a href="{{ url_for('logout') }}">Logout</a>
     </body>
     </html>
-    '''answer1=answer1, answer2=answer2, error=None)
+    ''', answer1=answer1, answer2=answer2, error=None)
 
 if __name__ == '__main__':
     app.run(debug=True)
