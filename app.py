@@ -126,12 +126,12 @@ def index():
                 "vector": embedding,
                 "certainty": 0.7  # Ajusta este valor según tus necesidades
             }
-            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { ... on Document { title author publicationDate identifier documentType language publisher rights } }"]).with_near_vector(near_vector).do()
+            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { title author publicationDate identifier documentType language publisher rights }"]).with_near_vector(near_vector).do()
             logger.info("Recibimos repuesta de weaviate e iniciamos la generación del prompt")          
             # Construir la variable prompt
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
-            
-            chunks = result.get("data", {}).get("Get", {}).get("Chunk", [])
+
+                        chunks = result.get("data", {}).get("Get", {}).get("Chunk", [])
 
             # Iterar sobre los chunks y extraer información
             for chunk in chunks:
