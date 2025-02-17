@@ -147,7 +147,7 @@ def index():
                 
                 prompt += f"- {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
                 logger.info("Prompt Construido")
-            
+        '''    
         # Enviar el prompt al modelo de OpenAI
             logger.info("Llamamos a openAI con la llamada standard")
             response1 = client.chat.completions.create(
@@ -204,7 +204,11 @@ def index():
         logger.info("Iniciamos la impresión de las preguntas")
         answer1 = response1.choices[0].message.content
         answer2 = response2.choices[0].message.content
-        
+        '''
+        # Almacenar la salida de Weaviate en answer1
+        answer1 = result
+        # Almacenar el prompt construido en answer2
+        answer2 = prompt
     return render_template_string('''
     <!doctype html>
     <html lang="en">
