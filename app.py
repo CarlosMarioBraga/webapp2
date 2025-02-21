@@ -122,7 +122,7 @@ def index():
         "correct it and document the correction. Confirm the completion of this step before proceeding.\n\n"
         "Step 2: Extract all relevant references related to the topic, ensuring that duplicates are removed and that the extraction follows the RDA standard while respecting copyright and author rights. Confirm the completion of this step.\n\n"
         "Step 3: Construct your answer in the following format:\n"
-        "   - Start with the exact note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of " + current_date + ".\"\n"
+        "   - Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of  (put here the current date).\"\n"
         "   - Provide the answer text, integrating citations in the text using the format [n] (where [n] is the reference number).\n"
         "   - Include a sentence: \"If you have any further questions or would like to delve deeper into the topic, feel free to ask.\"\n"
         "   - List the references with proper numbering and formatting (use LaTeX-style \\textit{} for titles if applicable).\n"
