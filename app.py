@@ -145,7 +145,7 @@ def index():
                 "vector": embedding,
                 "certainty": 0.4  # Ajusta este valor según tus necesidades
             }
-            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { ... on Document { title author publicationDate identifier documentType language publisher rights } }"]).with_near_vector(nearvector).do()
+            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "publisher", "rights"]).with_near_vector(nearvector).do()
             # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(nearvector).do()
             # result = bbddclient.query.get("Chunk", ["content"]).with_limit(5).do()
             logger.info("Recibimos repuesta de weaviate e iniciamos la generación del prompt")          
@@ -159,17 +159,15 @@ def index():
                 content = chunk.get("content")
                 page_number = chunk.get("pageNumber")
                 embedding_date = chunk.get("embeddingDate")
-                # document = chunk.get("document", {})
+                title = chunk.get("title")
+                author = chunk.get("author")
+                publication_date = chunk.get("publicationDate")
+                rights = chunk.get("rights")
 
-                # title = document.get("title")
-                # author = document.get("author")
-                # publication_date = document.get("publicationDate")
-                # rights = document.get("rights")
-
-                title = None
-                author = None
-                publication_date = None
-                rights = None
+                #title = None
+                #author = None
+                #publication_date = None
+                #rights = None
                 prompt += f"- {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
                 logger.info("Prompt Construido")
 
