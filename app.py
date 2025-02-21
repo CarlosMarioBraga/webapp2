@@ -143,7 +143,7 @@ def index():
             logger.info("Lanzamos consulta a Weaviate")
             nearvector = {
                 "vector": embedding,
-                "certainty": 0.5  # Ajusta este valor según tus necesidades
+                "certainty": 0.4  # Ajusta este valor según tus necesidades
             }
             # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { ... on Document { title author publicationDate identifier documentType language publisher rights } }"]).with_near_vector(nearvector).do()
             result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(nearvector).do()
