@@ -209,7 +209,7 @@ def index():
         # Almacenar la salida de Weaviate en answer1
         answer1 = result
         # Almacenar el prompt construido en answer2
-        answer2 = prompt
+        answer2 = embedding 
     return render_template_string('''
     <!doctype html>
     <html lang="en">
