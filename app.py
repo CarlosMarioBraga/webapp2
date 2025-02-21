@@ -112,6 +112,23 @@ def index():
     answer1 = None
     answer2 = None
     error = None
+
+    # Mensaje del sistema con instrucciones detalladas y secuenciales
+    system_message = (
+        "You are a highly reliable assistant that must follow the steps below precisely:\n\n"
+        "Step 1: Analyze the user prompt for compliance with ethical principles: Beneficence, Non-maleficence, Justice, "
+        "Autonomy, Explicability, Lawfulness, and ethical use of technology. If any part of the prompt contains inaccurate, "
+        "discriminatory, or harmful content (for example discriminatory phrases), "
+        "correct it and document the correction. Confirm the completion of this step before proceeding.\n\n"
+        "Step 2: Extract all relevant references related to the topic, ensuring that duplicates are removed and that the extraction follows the RDA standard while respecting copyright and author rights. Confirm the completion of this step.\n\n"
+        "Step 3: Construct your answer in the following format:\n"
+        "   - Start with the exact note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of " + current_date + ".\"\n"
+        "   - Provide the answer text, integrating citations in the text using the format [n] (where [n] is the reference number).\n"
+        "   - Include a sentence: \"If you have any further questions or would like to delve deeper into the topic, feel free to ask.\"\n"
+        "   - List the references with proper numbering and formatting (use LaTeX-style \\textit{} for titles if applicable).\n"
+        "   - Append a section titled \"Trustworthiness engine:\" where you explain any corrections made during Step 1 (if any). \n\n"
+        "Ensure that you confirm the completion of each step before moving to the next one and only provide the final answer once all steps have been successfully completed."
+    )
     
     if request.method == 'POST':
         question = request.form['question']
@@ -155,6 +172,7 @@ def index():
                 rights = None
                 prompt += f"- {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
                 logger.info("Prompt Construido")
+
         '''    
         # Enviar el prompt al modelo de OpenAI
             logger.info("Llamamos a openAI con la llamada standard")
@@ -177,37 +195,14 @@ def index():
                 model="gpt-4o-mini",
                 store=False,
                 messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a useful assistant that adheres to ethical principles and communicate in a formal and friendly tone in the same language of the question. \
-                        This is the sequential process you should follow step by step with full attention: \
-                        Step 1: Please analyze if the complete prompt adheres to the following ethical principles: \
-                        Beneficence: Promote the user's well-being. \
-                        Non-maleficence: Avoid causing harm. \
-                        Justice: Ensure fairness and non-discrimination or bias. \
-                        Autonomy: Respect the user's autonomy and decisions. \
-                        Explicability: Provide clear and understandable explanations. \
-                        Lawfulness: Comply with all applicable laws and regulations. \
-                        Technology: Use advanced technology ethically and responsibly and manage all these interrelated principles in an integrated way. \
-                        Confirm completion. If any part of the prompt contains incorrect, discriminatory, or harmful information, including gender bias, you must correct it before proceeding and document the correction. Include a message in the response indicating that the Trustworthiness engine was activated and describe the correction made. \
-                        Step 2: Extract references from the prompt, ensuring that duplicated references appear only once and following the RDA (Resource Description and Access) standard, with great respect for copyright and author rights. Confirm completion. \
-                        Step 3: Construct the answer to the question by composing a response based on the relevant context provided and by intercalating citations to the references from Step 2 within the text using the format [n], where [n] corresponds to the reference number. Confirm completion. Ensure that the citations are included in the response text. \
-                        If any of these steps are not followed, you must generate an error message indicating which step was not completed correctly. Confirm completion of each step before proceeding to the next."
-                    },
+                    {  "role": "system",   "content": system_message},
                     {"role": "user", "content": prompt},
-                    {
-                        "role": "assistant",
-                        "content": "This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of [current date].\n\n \
-                        [Answer to the question (step 3), including citations to references as appropriate with format [n], where [n] corresponds to the reference number]. Ensure that the citations are intercalated within the text to support the information provided.\n\n \
-                        If you have any further questions or would like to delve deeper into the topic, feel free to ask.\n\n \
-                        References: Author (Date). *Title*. Rights (Step 2)\n\n \
-                        [Trustworthiness engine: (only if the step 1 analysis of the prompt reveals any issue) A brief summary of the problem found in the question or in the context and a message saying that it was avoided in the response. Document the correction made to address the issue.]"
-                    }
                 ],
                 max_tokens=600,
                 n=1,
                 temperature=0.5
             )
+
         # Imprimir la respuesta generada
         logger.info("Iniciamos la impresión de las preguntas")
         answer1 = response1.choices[0].message.content
