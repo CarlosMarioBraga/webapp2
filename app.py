@@ -46,21 +46,11 @@ def generar_embedding2(pregunta):
 
     if response.status_code == 200:
             embedding = response.json().get('embedding')
-            if isinstance(embedding, list) and all(isinstance(x, (int, float)) for x in embedding):
-                return embedding
-                elif isinstance(embedding, list) and all(isinstance(x, list) for x in embedding):
-                    # Aplanar la lista de listas
-                    flat_embedding = [item for sublist in embedding for item in sublist]
-                    if all(isinstance(x, (int, float)) for x in flat_embedding):
-                        return flat_embedding
-                    else:
-                        raise ValueError("El embedding aplanado no tiene el formato correcto. Debe ser una lista de números.")
-                else:
-                    raise ValueError("El embedding no tiene el formato correcto. Debe ser una lista de números.")
-            else:
-                raise Exception(f"Error: {response.status_code}, {response.text}")
-
-
+            flat_embedding = [item for sublist in embedding for item in sublist]
+            return flat_embedding
+    else:
+            raise Exception(f"Error: {response.status_code}, {response.text}")
+        
 # Configuración de la base de datos
 DATABASE_URL = 'sqlite:///users.db'
 engine = create_engine(DATABASE_URL)
