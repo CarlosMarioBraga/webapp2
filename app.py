@@ -143,11 +143,11 @@ def index():
             logger.info("Lanzamos consulta a Weaviate")
             nearvector = {
                 "vector": embedding,
-                "certainty": 0  # Ajusta este valor según tus necesidades
+                "certainty": 0.7  # Ajusta este valor según tus necesidades
             }
-            # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_near_vector(nearvector).do()
+            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_near_vector(nearvector).do()
             # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(nearvector).do()
-            result = bbddclient.query.get("Chunk",  ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_limit(5).do()
+            # result = bbddclient.query.get("Chunk",  ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_limit(5).do()
             logger.info("Recibimos repuesta de weaviate e iniciamos la generación del prompt")          
             # Construir la variable prompt
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
