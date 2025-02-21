@@ -46,8 +46,14 @@ def generar_embedding2(pregunta):
 
     if response.status_code == 200:
         return response.json().get('embedding')
+        if isinstance(embedding, list) and all(isinstance(x, (int, float)) for x in embedding):
+            return embedding
+        else:
+            raise ValueError("El embedding no tiene el formato correcto. Debe ser una lista de números.")
     else:
         raise Exception(f"Error: {response.status_code}, {response.text}")
+
+
 
 # Configuración de la base de datos
 DATABASE_URL = 'sqlite:///users.db'
@@ -122,12 +128,12 @@ def index():
             bbddclient = weaviate.Client("http://50.85.209.27:8081")
             # Realizar una consulta a Weaviate para obtener los chunks más cercanos
             logger.info("Lanzamos consulta a Weaviate")
-            near_vector = {
+            nearvector = {
                 "vector": embedding,
                 "certainty": 0.7  # Ajusta este valor según tus necesidades
             }
-            # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { ... on Document { title author publicationDate identifier documentType language publisher rights } }"]).with_near_vector(near_vector).do()
-            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(near_vector).do()
+            # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "document { ... on Document { title author publicationDate identifier documentType language publisher rights } }"]).with_near_vector(nearvector).do()
+            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(nearvector).do()
             logger.info("Recibimos repuesta de weaviate e iniciamos la generación del prompt")          
             # Construir la variable prompt
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
