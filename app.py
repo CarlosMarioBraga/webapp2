@@ -146,10 +146,10 @@ def index():
                 # publication_date = document.get("publicationDate")
                 # rights = document.get("rights")
 
-                title = 'PutTitle'
-                author = 'PutAuthor'
-                publication_date = 'putpublicationDate'
-                rights = 'putrights'
+                title = None
+                author = None
+                publication_date = None
+                rights = None
                 prompt += f"- {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
                 logger.info("Prompt Construido")
         '''    
