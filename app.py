@@ -124,11 +124,10 @@ def index():
         "   - Extract all relevant references related to the topic, ensuring that duplicates are removed and that the extraction follows the RDA standard while respecting copyright and author rights.\n\n"
         "Now, construct your final answer using the following format:\n"
         "   1. Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of <CURRENT_DATE>.\" \n"
-        "      - Replace <CURRENT_DATE> with the actual current date at the time of execution.\n"
         "   2. Provide the answer text, integrating citations using the format [n] (where [n] is the reference number). Ensure that each citation is placed directly next to the portion of text it supports, and avoid appending all references after every sentence.\n"
         "   3. Include the sentence: \"If you have any further questions or would like to delve deeper into the topic, feel free to ask.\"\n"
-        "   4. List the references on separate lines with proper numbering and formatting. The reference titles must be displayed in italics using Markdown formatting (e.g., *Title*).\n"
-        "   5. Append a section titled \"Trustworthiness engine:\" where you briefly explain any corrections made during your internal ethical analysis (include this section only if any corrections were performed).\n\n"
+        "   4. Append a section with the header __References:__ (using Markdown for underlining) followed by the list of references, each on a new line with proper numbering and formatting. The reference titles must be displayed in italics using Markdown (e.g., Title). Include the 'Rights' field for each reference.\n"
+        "   5. Append a section with the header __Trustworthiness engine:__ (using Markdown for underlining) where you briefly explain any corrections made during your internal ethical analysis (include this section only if any corrections were performed).\n\n"
         "Important formatting instructions:\n"
         "   - Use actual newline characters (\\n) for line breaks instead of HTML tags.\n"
         "   - Use Markdown syntax (e.g., *italic text*) to render text in italics.\n\n"
@@ -231,7 +230,7 @@ def index():
                 ],
                 max_tokens=600,
                 n=1,
-                temperature=0.5
+                temperature=0.3
          )
 
 
@@ -244,9 +243,9 @@ def index():
                     {  "role": "system",   "content": system_message},
                     {"role": "user", "content": prompt},
                 ],
-                max_tokens=600,
+                max_tokens=1000,
                 n=1,
-                temperature=0.5
+                temperature=0.3
         )
 
         # Imprimir la respuesta generada
