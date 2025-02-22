@@ -145,9 +145,9 @@ def index():
                 "vector": embedding,
                 "certainty": 0.7  # Ajusta este valor según tus necesidades
             }
-            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_near_vector(nearvector).do()
+            #result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_near_vector(nearvector).do()
             # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(nearvector).do()
-            # result = bbddclient.query.get("Chunk",  ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_limit(5).do()
+            result = bbddclient.query.get("Chunk",  ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_limit(100).do()
             logger.info("Recibimos repuesta de weaviate e iniciamos la generación del prompt")          
             # Construir la variable prompt
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
@@ -207,9 +207,9 @@ def index():
         answer2 = response2.choices[0].message.content
         '''
         # Almacenar la salida de Weaviate en answer1
-        answer1 = result
+        answer1 = prompt
         # Almacenar el prompt construido en answer2
-        answer2 = embedding 
+        answer2 = None 
     return render_template_string('''
     <!doctype html>
     <html lang="en">
