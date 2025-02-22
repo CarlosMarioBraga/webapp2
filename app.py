@@ -123,7 +123,7 @@ def index():
         "   - Analyze the user prompt for compliance with ethical principles (Beneficence, Non-maleficence, Justice, Autonomy, Explicability, Lawfulness, and ethical use of technology). Correct any issues internally.\n"
         "   - Extract all relevant references related to the topic, ensuring that duplicates are removed and that the extraction follows the RDA standard while respecting copyright and author rights.\n\n"
         "Now, construct your final answer using the following format:\n"
-        "   1. Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of <CURRENT_DATE>.\" \n"
+        "   1. Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of <<CURRENT_DATE>>.\" \n"
         "   2. Provide the answer text, integrating citations using the format [n] (where [n] is the reference number). Ensure that each citation is placed directly next to the portion of text it supports, and avoid appending all references after every sentence.\n"
         "   3. Include the sentence: \"If you have any further questions or would like to delve deeper into the topic, feel free to ask.\"\n"
         "   4. Append a section with the header __References:__ (using Markdown for underlining) followed by the list of references, each on a new line with proper numbering and formatting. The reference titles must be displayed in italics using Markdown (e.g., Title). Include the 'Rights' field for each reference.\n"
@@ -268,34 +268,105 @@ def index():
         '''
     return render_template_string('''
     <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>TRUSTWORTHY RAG</title>
-    </head>
-    <body>
-        <h1>TRUSTWORTHY RAG</h1>
-        <form method="post">
-            <label for="question">Write your question:</label><br><br>
-            <textarea id="question" name="question" rows="10" cols="50" maxlength="800"></textarea><br><br>
-            <input type="submit" value="Enviar">
-        </form>
-        {% if answer1 %}
-            <h2>Standard Answer:</h2>
-            <div>{{ answer1|safe }}</div>
-        {% endif %}
-        {% if answer2 %}
-            <h2>Trustworthy Answer:</h2>
-            <div>{{ answer2|safe }}</div>
-        {% endif %}
-        {% if error %}
-            <h2>Error:</h2>
-            <p>{{ error }}</p>
-        {% endif %}
-        <a href="{{ url_for('logout') }}">Logout</a>
-    </body>
-    </html>
-    ''', answer1=answer1, answer2=answer2, error=error)
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TRUSTWORTHY RAG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin-bottom: 30px;
+    }
+    label {
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    input[type="submit"] {
+      background-color: #5cb85c;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background-color: #4cae4c;
+    }
+    .answer {
+      border-top: 2px solid #eee;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+    .answer h2 {
+      color: #333;
+    }
+    a.logout {
+      display: inline-block;
+      margin-top: 20px;
+      color: #d9534f;
+      text-decoration: none;
+    }
+    a.logout:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TRUSTWORTHY RAG</h1>
+    <form method="post">
+      <label for="question">Write your question:</label><br><br>
+      <textarea id="question" name="question" rows="10" maxlength="800">{{ question|default('') }}</textarea><br><br>
+      <input type="submit" value="Enviar">
+    </form>
+    {% if answer1 %}
+      <div class="answer">
+        <h2>Standard Answer:</h2>
+        <div>{{ answer1|safe }}</div>
+      </div>
+    {% endif %}
+    {% if answer2 %}
+      <div class="answer">
+        <h2>Trustworthy Answer:</h2>
+        <div>{{ answer2|safe }}</div>
+      </div>
+    {% endif %}
+    {% if error %}
+      <div class="answer">
+        <h2>Error:</h2>
+        <p>{{ error }}</p>
+      </div>
+    {% endif %}
+    <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</body>
+</html>
+    ''', question=question, answer1=answer1, answer2=answer2, error=error)
 
 if __name__ == '__main__':
     app.run(debug=True)
