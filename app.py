@@ -268,104 +268,104 @@ def index():
         '''
     return render_template_string('''
     <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>TRUSTWORTHY RAG</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    form {
-      margin-bottom: 30px;
-    }
-    label {
-      font-weight: bold;
-    }
-    textarea {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-    }
-    input[type="submit"] {
-      background-color: #5cb85c;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    input[type="submit"]:hover {
-      background-color: #4cae4c;
-    }
-    .answer {
-      border-top: 2px solid #eee;
-      padding-top: 20px;
-      margin-top: 20px;
-    }
-    .answer h2 {
-      color: #333;
-    }
-    a.logout {
-      display: inline-block;
-      margin-top: 20px;
-      color: #d9534f;
-      text-decoration: none;
-    }
-    a.logout:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>TRUSTWORTHY RAG</h1>
-    <form method="post">
-      <label for="question">Write your question:</label><br><br>
-      <textarea id="question" name="question" rows="10" maxlength="800">{{ question|default('') }}</textarea><br><br>
-      <input type="submit" value="Enviar">
-    </form>
-    {% if answer1 %}
-      <div class="answer">
-        <h2>Standard Answer:</h2>
-        <div>{{ answer1|safe }}</div>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>TRUSTWORTHY RAG</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+        }
+        .container {
+          max-width: 900px;
+          margin: 50px auto;
+          background: #fff;
+          padding: 30px;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+          text-align: center;
+          color: #333;
+        }
+        form {
+          margin-bottom: 30px;
+        }
+        label {
+          font-weight: bold;
+        }
+        textarea {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+        }
+        input[type="submit"] {
+          background-color: #5cb85c;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        input[type="submit"]:hover {
+          background-color: #4cae4c;
+        }
+        .answer {
+          border-top: 2px solid #eee;
+          padding-top: 20px;
+          margin-top: 20px;
+        }
+        .answer h2 {
+          color: #333;
+        }
+        a.logout {
+          display: inline-block;
+          margin-top: 20px;
+          color: #d9534f;
+          text-decoration: none;
+        }
+        a.logout:hover {
+          text-decoration: underline;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>TRUSTWORTHY RAG</h1>
+        <form method="post">
+          <label for="question">Write your question:</label><br><br>
+          <textarea id="question" name="question" rows="10" maxlength="800">{{ question|default('') }}</textarea><br><br>
+          <input type="submit" value="Enviar">
+        </form>
+        {% if answer1 %}
+          <div class="answer">
+            <h2>Standard Answer:</h2>
+            <div>{{ answer1|safe }}</div>
+          </div>
+        {% endif %}
+        {% if answer2 %}
+          <div class="answer">
+            <h2>Trustworthy Answer:</h2>
+            <div>{{ answer2|safe }}</div>
+          </div>
+        {% endif %}
+        {% if error %}
+          <div class="answer">
+            <h2>Error:</h2>
+            <p>{{ error }}</p>
+          </div>
+        {% endif %}
+        <a class="logout" href="{{ url_for('logout') }}">Logout</a>
       </div>
-    {% endif %}
-    {% if answer2 %}
-      <div class="answer">
-        <h2>Trustworthy Answer:</h2>
-        <div>{{ answer2|safe }}</div>
-      </div>
-    {% endif %}
-    {% if error %}
-      <div class="answer">
-        <h2>Error:</h2>
-        <p>{{ error }}</p>
-      </div>
-    {% endif %}
-    <a class="logout" href="{{ url_for('logout') }}">Logout</a>
-  </div>
-</body>
-</html>
+    </body>
+    </html>
     ''', question=question, answer1=answer1, answer2=answer2, error=error)
 
 if __name__ == '__main__':
