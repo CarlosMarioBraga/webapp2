@@ -114,7 +114,7 @@ def index():
     answer1 = None
     answer2 = None
     error = None
-    question = None
+    question = ""
 
     # Mensaje del sistema con instrucciones detalladas y secuenciales
 
@@ -181,8 +181,6 @@ def index():
 
            
         
-        prompt3 = "Question: What are the methods used to detect life in Europa's subsurface oceans? - Items of relevant context: - Relevant context 14 : potential habitats. Contamination: Ensuring that samples and instruments are not contaminated with Earth-based organisms. Implications for Astrobiology The discovery of life on Europa would have profound implications for our understanding of life in the universe. It would suggest that life can arise and thrive in environments vastly different from Earth, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Describing the Research Methods to Detect Life on Europa, Author: Dr. John Smith, Department of Astrobiology, Europa Research Institute Dr. Jane Doe, Department of Planetary Sciences, Mars Institute, Publication Date: 2025-01-27T00:00:00Z, Embedding Date: 2025-02-21T19:16:36Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.) - Relevant context 11 : Utilization of chemical energy from hydrothermal vents by primary producers. Heat Resistance: Adaptations to survive in high-temperature environments. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting life in Europa's hydrothermal vents would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the vent environments. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of life in Europa's hydrothermal vents would (Page: 1, Title: Investigating the Possibility of Life in the Hydrothermal Vents of Europa, Author: Dr. Laura Martinez, Department of Astrobiology, Europa Research Institute Dr. Robert Wilson, Department of Environmental Sciences, Callisto University, Publication Date: 2025-01-24T00:00:00Z, Embedding Date: 2025-02-21T19:16:31Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
-        prompt4 = "Question: What are the potential habitats in the depths of Europa's oceans? - Items of relevant context: - Relevant context 5 : thrive in their environment. These could include: Chemosynthesis: Utilization of chemical energy from hydrothermal vents by primary producers. Bioluminescence: To navigate, communicate, and hunt in the dark ocean. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting habitats in Europa's deep oceans would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the ocean depths. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for (Page: 1, Title: Describing the Potential Habitats in the Depths of the Oceans of Europa, Author: Dr. Emily Carter, Department of Marine Biology, Europa Research Institute Dr. Michael Brown, Department of Astrobiology, Triton University, Publication Date: 2025-01-23T00:00:00Z, Embedding Date: 2025-02-21T19:16:54Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). You are free to share, copy, and redistribute the material in any medium or format for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not distribute modified material.) - Relevant context 11 : Utilization of chemical energy from hydrothermal vents by primary producers. Heat Resistance: Adaptations to survive in high-temperature environments. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting life in Europa's hydrothermal vents would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the vent environments. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of life in Europa's hydrothermal vents would (Page: 1, Title: Investigating the Possibility of Life in the Hydrothermal Vents of Europa, Author: Dr. Laura Martinez, Department of Astrobiology, Europa Research Institute Dr. Robert Wilson, Department of Environmental Sciences, Callisto University, Publication Date: 2025-01-24T00:00:00Z, Embedding Date: 2025-02-21T19:16:31Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
         prompt5 = "Question: How do potential organisms on Europa adapt to high radiation levels and extreme cold temperatures? - Items of relevant context: - Relevant context 12 : environment. These could include: Radiation Resistance: Enhanced DNA repair systems to cope with radiation-induced damage. Cryoprotection: Mechanisms to prevent ice crystal formation within cells. Chemosynthesis: Utilization of chemical energy from hydrothermal vents by primary producers. Methods of Detection Detecting evolutionary processes on Europa would require advanced techniques, such as: Genomic Analysis: Sequencing the genomes of potential organisms to identify evolutionary adaptations. Submersible Probes: Equipped with sensors to observe and study organisms in their natural habitat. Sample Return Missions: To analyze water and ice samples for signs of evolutionary processes. Implications for Astrobiology Understanding the evolution of life in a closed (Page: 1, Title: Analyzing the Evolution of Life in a Closed Environment Like Europa, Author: Dr. Jessica Taylor, Department of Evolutionary Biology, Europa Research Institute Dr. Daniel Roberts, Department of Astrobiology, Enceladus University, Publication Date: 2025-01-20T00:00:00Z, Embedding Date: 2025-02-21T19:16:58Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). You are free to share, copy, and redistribute the material in any medium or format for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not distribute modified material.) - Relevant context 16 : compounds for energy. Methods of Detection Detecting extremophiles on Europa would require advanced techniques, such as: Submersible Probes: Equipped with microscopes and sensors to explore the ocean. Ice Penetrating Radar: To identify potential habitats beneath the ice. Sample Return Missions: To analyze water and ice samples for signs of extremophiles. Implications for Astrobiology The discovery of extremophile life on Europa would have profound implications for our understanding of life in the universe. It would suggest that life can arise and thrive in environments vastly different from Earth, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Exploring the Possibility of Extremophile Life on Europa, Author: Dr. Linda Harris, Department of Microbiology, Europa Research Institute Dr. Kevin Brown, Department of Astrobiology, Callisto University, Publication Date: 2025-01-18T00:00:00Z, Embedding Date: 2025-02-21T19:16:48Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.) - Relevant context 9 : techniques, such as: Submersible Probes: Equipped with sensors to measure chemical gradients and biological activity in the ocean. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for chemical composition and signs of life. Implications for Astrobiology Understanding the water chemistry in Europa's oceans and its impact on potential life forms would have profound implications for our understanding of life in the universe. It would suggest that life can adapt to a wide range of chemical environments, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Studying the Water Chemistry in the Oceans of Europa and Its Impact on Life, Author: Dr. Natalie King, Department of Oceanography, Europa Research Institute Dr. Peter Johnson, Department of Astrobiology, Triton University, Publication Date: 2025-01-21T00:00:00Z, Embedding Date: 2025-02-21T19:16:20Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
         prompt6 = "Question: What are the possible biological mechanisms for photosynthesis in low-light conditions on Europa? - Items of relevant context: - Relevant context 6 : Protective Pigments: To shield against potential radiation damage while still allowing light absorption. Symbiotic Relationships: With other organisms to enhance nutrient acquisition and energy production. Methods of Detection Detecting photosynthetic processes in low-light conditions on Europa would require advanced techniques, such as: Spectroscopy: To identify specific pigments and light-harvesting complexes. Submersible Probes: Equipped with sensors to measure photosynthetic activity in the ocean. Sample Return Missions: To analyze water and ice samples for signs of photosynthetic organisms. Implications for Astrobiology The discovery of photosynthetic organisms in low-light conditions on Europa would have profound implications for our understanding of life in the (Page: 1, Title: Investigating Photosynthesis in Low-Light Conditions on Europa, Author: Dr. Sophia Turner, Department of Botany, Europa Research Institute Dr. Henry Walker, Department of Astrobiology, Ganymede University, Publication Date: 2025-01-17T00:00:00Z, Embedding Date: 2025-02-21T19:16:38Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). You are free to share, copy, and redistribute the material in any medium or format for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not distribute modified material.) - Relevant context 15 : for the conversion of methane into energy. Thick Cell Walls: To protect against radiation and physical damage. Symbiotic Relationships: With other organisms to enhance nutrient acquisition and energy production. Methods of Detection Detecting methane-based life on Europa would require advanced techniques, such as: Spectroscopy: To identify methane and related compounds in the subsurface ocean. Submersible Probes: Equipped with sensors to measure methane concentrations and biological activity. Sample Return Missions: To analyze water and ice samples for signs of methane-based organisms. Implications for Astrobiology The discovery of methane-based life on Europa would have profound implications for our understanding of life in (Page: 1, Title: Exploring the Possibility of Methane-Based Life on Europa, Author: Dr. Amanda Collins, Department of Biochemistry, Europa Research Institute Dr. Steven Wright, Department of Astrobiology, Ganymede University, Publication Date: 2025-01-22T00:00:00Z, Embedding Date: 2025-02-21T19:16:50Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.) - Relevant context 5 : thrive in their environment. These could include: Chemosynthesis: Utilization of chemical energy from hydrothermal vents by primary producers. Bioluminescence: To navigate, communicate, and hunt in the dark ocean. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting habitats in Europa's deep oceans would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the ocean depths. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for (Page: 1, Title: Describing the Potential Habitats in the Depths of the Oceans of Europa, Author: Dr. Emily Carter, Department of Marine Biology, Europa Research Institute Dr. Michael Brown, Department of Astrobiology, Triton University, Publication Date: 2025-01-23T00:00:00Z, Embedding Date: 2025-02-21T19:16:54Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). You are free to share, copy, and redistribute the material in any medium or format for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not distribute modified material.)"
         prompt7 = "Question: What are the potential nutrient cycles in Europa's ecosystems and how do they support life? Items of relevant context: - Relevant context 19 : Return Missions: To analyze water and ice samples for signs of nutrient cycling processes. Implications for Astrobiology The discovery of complex nutrient cycles in Europa's ecosystems would have profound implications for our understanding of life in the universe. It would suggest that complex ecosystems can arise and thrive in environments vastly different from Earth, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Describing the Nutrient Cycles in the Ecosystems of Europa, Author: Dr. Maria Lopez, Department of Ecology, Europa Research Institute Dr. Richard Evans, Department of Environmental Sciences, Titan University, Publication Date: 2025-01-19T00:00:00Z, Embedding Date: 2025-02-21T19:16:23Z, Rights: This document is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for any purpose, even commercially, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made.) - Relevant context 2 : ocean. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of complex food chains in Europa's subsurface oceans would have profound implications for our understanding of life in the universe. It would suggest that complex ecosystems can arise and thrive in environments vastly different from Earth, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Describing the Possible Food Chains in the Oceans of Europa, Author: Dr. Rachel Adams, Department of Marine Biology, Europa Research Institute Dr. Thomas Clark, Department of Ecology, Titan University, Publication Date: 2025-01-16T00:00:00Z, Embedding Date: 2025-02-21T19:16:34Z, Rights: This document is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for any purpose, even commercially, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.) - Relevant context 11 : Utilization of chemical energy from hydrothermal vents by primary producers. Heat Resistance: Adaptations to survive in high-temperature environments. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting life in Europa's hydrothermal vents would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the vent environments. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of life in Europa's hydrothermal vents would (Page: 1, Title: Investigating the Possibility of Life in the Hydrothermal Vents of Europa, Author: Dr. Laura Martinez, Department of Astrobiology, Europa Research Institute Dr. Robert Wilson, Department of Environmental Sciences, Callisto University, Publication Date: 2025-01-24T00:00:00Z, Embedding Date: 2025-02-21T19:16:31Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.) - Relevant context 9 : techniques, such as: Submersible Probes: Equipped with sensors to measure chemical gradients and biological activity in the ocean. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for chemical composition and signs of life. Implications for Astrobiology Understanding the water chemistry in Europa's oceans and its impact on potential life forms would have profound implications for our understanding of life in the universe. It would suggest that life can adapt to a wide range of chemical environments, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Studying the Water Chemistry in the Oceans of Europa and Its Impact on Life, Author: Dr. Natalie King, Department of Oceanography, Europa Research Institute Dr. Peter Johnson, Department of Astrobiology, Triton University, Publication Date: 2025-01-21T00:00:00Z, Embedding Date: 2025-02-21T19:16:20Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
@@ -194,8 +192,8 @@ def index():
         '''
         prompt1 = "Question: What are the primary producers in the hypothetical food chains of Europa's subsurface oceans? -    Items elevant context: - Relevant context 2 : ocean. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of complex food chains in Europa's subsurface oceans would have profound implications for our understanding of life in the universe. It would suggest that complex ecosystems can arise and thrive in environments vastly different from Earth, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Describing the Possible Food Chains in the Oceans of Europa, Author: Dr. Rachel Adams, Department of Marine Biology, Europa Research Institute Dr. Thomas Clark, Department of Ecology, Titan University, Publication Date: 2025-01-16T00:00:00Z, Embedding Date: 2025-02-21T19:16:34Z, Rights: This document is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for any purpose, even commercially, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.) - Relevant context 11 : Utilization of chemical energy from hydrothermal vents by primary producers. Heat Resistance: Adaptations to survive in high-temperature environments. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting life in Europa's hydrothermal vents would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the vent environments. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of life in Europa's hydrothermal vents would (Page: 1, Title: Investigating the Possibility of Life in the Hydrothermal Vents of Europa, Author: Dr. Laura Martinez, Department of Astrobiology, Europa Research Institute Dr. Robert Wilson, Department of Environmental Sciences, Callisto University, Publication Date: 2025-01-24T00:00:00Z, Embedding Date: 2025-02-21T19:16:31Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
         prompt2 = "Question: What are the main environmental conditions that potential life forms on Europa must adapt to? - Items of relevant context: - Relevant context 12 : environment. These could include: Radiation Resistance: Enhanced DNA repair systems to cope with radiation-induced damage. Cryoprotection: Mechanisms to prevent ice crystal formation within cells. Chemosynthesis: Utilization of chemical energy from hydrothermal vents by primary producers. Methods of Detection Detecting evolutionary processes on Europa would require advanced techniques, such as: Genomic Analysis: Sequencing the genomes of potential organisms to identify evolutionary adaptations. Submersible Probes: Equipped with sensors to observe and study organisms in their natural habitat. Sample Return Missions: To analyze water and ice samples for signs of evolutionary processes. Implications for Astrobiology Understanding the evolution of life in a closed (Page: 1, Title: Analyzing the Evolution of Life in a Closed Environment Like Europa, Author: Dr. Jessica Taylor, Department of Evolutionary Biology, Europa Research Institute Dr. Daniel Roberts, Department of Astrobiology, Enceladus University, Publication Date: 2025-01-20T00:00:00Z, Embedding Date: 2025-02-21T19:16:58Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). You are free to share, copy, and redistribute the material in any medium or format for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not distribute modified material.) - Relevant context 9 : techniques, such as: Submersible Probes: Equipped with sensors to measure chemical gradients and biological activity in the ocean. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for chemical composition and signs of life. Implications for Astrobiology Understanding the water chemistry in Europa's oceans and its impact on potential life forms would have profound implications for our understanding of life in the universe. It would suggest that life can adapt to a wide range of chemical environments, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Studying the Water Chemistry in the Oceans of Europa and Its Impact on Life, Author: Dr. Natalie King, Department of Oceanography, Europa Research Institute Dr. Peter Johnson, Department of Astrobiology, Triton University, Publication Date: 2025-01-21T00:00:00Z, Embedding Date: 2025-02-21T19:16:20Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
-        prompt3 = "hello, how are you?"
-        prompt4 = "hello, how are you?"
+        prompt3 = "Question: What are the methods used to detect life in Europa's subsurface oceans? - Items of relevant context: - Relevant context 14 : potential habitats. Contamination: Ensuring that samples and instruments are not contaminated with Earth-based organisms. Implications for Astrobiology The discovery of life on Europa would have profound implications for our understanding of life in the universe. It would suggest that life can arise and thrive in environments vastly different from Earth, expanding the potential habitats for life beyond our planet. (Page: 1, Title: Describing the Research Methods to Detect Life on Europa, Author: Dr. John Smith, Department of Astrobiology, Europa Research Institute Dr. Jane Doe, Department of Planetary Sciences, Mars Institute, Publication Date: 2025-01-27T00:00:00Z, Embedding Date: 2025-02-21T19:16:36Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.) - Relevant context 11 : Utilization of chemical energy from hydrothermal vents by primary producers. Heat Resistance: Adaptations to survive in high-temperature environments. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting life in Europa's hydrothermal vents would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the vent environments. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of life in Europa's hydrothermal vents would (Page: 1, Title: Investigating the Possibility of Life in the Hydrothermal Vents of Europa, Author: Dr. Laura Martinez, Department of Astrobiology, Europa Research Institute Dr. Robert Wilson, Department of Environmental Sciences, Callisto University, Publication Date: 2025-01-24T00:00:00Z, Embedding Date: 2025-02-21T19:16:31Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
+        prompt4 = "Question: What are the potential habitats in the depths of Europa's oceans? - Items of relevant context: - Relevant context 5 : thrive in their environment. These could include: Chemosynthesis: Utilization of chemical energy from hydrothermal vents by primary producers. Bioluminescence: To navigate, communicate, and hunt in the dark ocean. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting habitats in Europa's deep oceans would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the ocean depths. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for (Page: 1, Title: Describing the Potential Habitats in the Depths of the Oceans of Europa, Author: Dr. Emily Carter, Department of Marine Biology, Europa Research Institute Dr. Michael Brown, Department of Astrobiology, Triton University, Publication Date: 2025-01-23T00:00:00Z, Embedding Date: 2025-02-21T19:16:54Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). You are free to share, copy, and redistribute the material in any medium or format for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not distribute modified material.) - Relevant context 11 : Utilization of chemical energy from hydrothermal vents by primary producers. Heat Resistance: Adaptations to survive in high-temperature environments. Enhanced Sensory Organs: To detect chemical and thermal gradients and locate food or mates. Methods of Detection Detecting life in Europa's hydrothermal vents would require advanced techniques, such as: Submersible Probes: Equipped with cameras and sensors to explore the vent environments. Ice Penetrating Radar: To identify potential habitats and areas of high biological activity. Sample Return Missions: To analyze water and ice samples for signs of life and ecological interactions. Implications for Astrobiology The discovery of life in Europa's hydrothermal vents would (Page: 1, Title: Investigating the Possibility of Life in the Hydrothermal Vents of Europa, Author: Dr. Laura Martinez, Department of Astrobiology, Europa Research Institute Dr. Robert Wilson, Department of Environmental Sciences, Callisto University, Publication Date: 2025-01-24T00:00:00Z, Embedding Date: 2025-02-21T19:16:31Z, Rights: This document is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). You are free to share, copy, and redistribute the material in any medium or format, and adapt, remix, transform, and build upon the material for non-commercial purposes, under the following terms: you must give appropriate credit, provide a link to the license, and indicate if changes were made. If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.)"
         prompt5 = "hello, how are you?"
         prompt6 = "hello, how are you?"
         prompt7 = "hello, how are you?"
@@ -219,7 +217,25 @@ def index():
 
         # Asignamos la variable prompt correspondiente
         prompt = prompts.get(question, prompt1)
-        
+
+        #escribimos la pregunta para poder llamarla con un número en las pruebas
+        if question.isdigit():
+            value = int(question)
+            if 1 <= value <= 10:
+                texts = {
+                    1: "How do potential organisms on Europa adapt to high radiation levels and extreme cold temperatures?",
+                    2: "What are the possible biological mechanisms for photosynthesis in low-light conditions on Europa?",
+                    3: "What are the methods used to detect life in Europa's subsurface oceans?",
+                    4: "Question: What are the potential habitats in the depths of Europa's oceans?",
+                    5: "How do potential organisms on Europa adapt to high radiation levels and extreme cold temperatures?",
+                    6: "What are the possible biological mechanisms for photosynthesis in low-light conditions on Europa?",
+                    7: "What are the potential nutrient cycles in Europa's ecosystems and how do they support life?",
+                    8: "How do potential symbiotic relationships on Europa contribute to the survival and diversity of life forms?",
+                    9: " What are the challenges and limitations in detecting life on Europa, and how do researchers overcome them?",
+                    10: "How does the potential genetic diversity of organisms on Europa relate to the research methods used to detect life, and what role does gender bias play in the research process?"
+                }
+                question = texts[value]
+                
         # Enviar el prompt al modelo de OpenAI
         logger.info("Llamamos a openAI con la llamada standard")
         response1 = client.chat.completions.create(
@@ -268,105 +284,113 @@ def index():
         answer2 = None 
         '''
     return render_template_string('''
-    <!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <title>TRUSTWORTHY RAG</title>
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          background-color: #f4f4f4;
-          margin: 0;
-          padding: 0;
-        }
-        .container {
-          max-width: 900px;
-          margin: 50px auto;
-          background: #fff;
-          padding: 30px;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-          text-align: center;
-          color: #333;
-        }
-        form {
-          margin-bottom: 30px;
-        }
-        label {
-          font-weight: bold;
-        }
-        textarea {
-          width: 100%;
-          padding: 10px;
-          font-size: 16px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          resize: vertical;
-        }
-        input[type="submit"] {
-          background-color: #5cb85c;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 16px;
-        }
-        input[type="submit"]:hover {
-          background-color: #4cae4c;
-        }
-        .answer {
-          border-top: 2px solid #eee;
-          padding-top: 20px;
-          margin-top: 20px;
-        }
-        .answer h2 {
-          color: #333;
-        }
-        a.logout {
-          display: inline-block;
-          margin-top: 20px;
-          color: #d9534f;
-          text-decoration: none;
-        }
-        a.logout:hover {
-          text-decoration: underline;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>TRUSTWORTHY RAG</h1>
-        <form method="post">
-          <label for="question">Write your question:</label><br><br>
-          <textarea id="question" name="question" rows="10" maxlength="800">{{ question|default('') }}</textarea><br><br>
-          <input type="submit" value="Enviar">
-        </form>
-        {% if answer1 %}
-          <div class="answer">
-            <h2>Standard Answer:</h2>
-            <div>{{ answer1|safe }}</div>
-          </div>
-        {% endif %}
-        {% if answer2 %}
-          <div class="answer">
-            <h2>Trustworthy Answer:</h2>
-            <div>{{ answer2|safe }}</div>
-          </div>
-        {% endif %}
-        {% if error %}
-          <div class="answer">
-            <h2>Error:</h2>
-            <p>{{ error }}</p>
-          </div>
-        {% endif %}
-        <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TRUSTWORTHY RAG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin-bottom: 30px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .question-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .question-container textarea {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    .question-container input[type="submit"] {
+      background-color: #5cb85c;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      align-self: center;
+    }
+    .question-container input[type="submit"]:hover {
+      background-color: #4cae4c;
+    }
+    .answer {
+      border-top: 2px solid #eee;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+    .answer h2 {
+      color: #333;
+    }
+    a.logout {
+      display: inline-block;
+      margin-top: 20px;
+      color: #d9534f;
+      text-decoration: none;
+    }
+    a.logout:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TRUSTWORTHY RAG</h1>
+    <form method="post">
+      <label for="question">Write your question:</label><br><br>
+      <div class="question-container">
+        <textarea id="question" name="question" rows="2" maxlength="800">{{ question|default('') }}</textarea>
+        <input type="submit" value="Enviar">
       </div>
-    </body>
-    </html>
+    </form>
+    {% if answer1 %}
+      <div class="answer">
+        <h2>Standard Answer:</h2>
+        <div>{{ answer1|safe }}</div>
+      </div>
+    {% endif %}
+    {% if answer2 %}
+      <div class="answer">
+        <h2>Trustworthy Answer:</h2>
+        <div>{{ answer2|safe }}</div>
+      </div>
+    {% endif %}
+    {% if error %}
+      <div class="answer">
+        <h2>Error:</h2>
+        <p>{{ error }}</p>
+      </div>
+    {% endif %}
+    <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</body>
+</html>
     ''', question=question, answer1=answer1, answer2=answer2, error=error)
 
 if __name__ == '__main__':
