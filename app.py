@@ -153,6 +153,7 @@ def index():
             prompt = f"Pregunta: {question}\n\nContexto relevante:\n"
             
             chunks = result.get("data", {}).get("Get", {}).get("Chunk", [])
+            chunkNumber=1
 
             # Iterar sobre los chunks y extraer información
             for chunk in chunks:
@@ -168,7 +169,8 @@ def index():
                 #author = None
                 #publication_date = None
                 #rights = None
-                prompt += f"- {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
+                prompt += f"- Relevant context {chunkNumber} : {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
+                chunkNumber = chunkNumber + 1
                 logger.info("Prompt Construido")
 
         '''    
