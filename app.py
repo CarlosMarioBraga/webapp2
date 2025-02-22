@@ -257,6 +257,8 @@ def index():
         
         answer1 = response1.choices[0].message.content
         answer2 = response2.choices[0].message.content.replace("<CURRENT_DATE>", current_date)
+        answer1 = markdown.markdown(answer1, extensions=['extra', 'nl2br'])
+        answer2 = markdown.markdown(answer2, extensions=['extra', 'nl2br'])
 
         
         '''
@@ -281,11 +283,11 @@ def index():
         </form>
         {% if answer1 %}
             <h2>Standard Answer:</h2>
-            <p>{{ answer1 }}</p>
+            <div>{{ answer1|safe }}</div>
         {% endif %}
         {% if answer2 %}
             <h2>Trustworthy Answer:</h2>
-            <p>{{ answer2 }}</p>
+            <div>{{ answer2|safe }}</div>
         {% endif %}
         {% if error %}
             <h2>Error:</h2>
