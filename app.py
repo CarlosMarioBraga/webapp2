@@ -121,14 +121,17 @@ def index():
         "   - Analyze the user prompt for compliance with ethical principles (Beneficence, Non-maleficence, Justice, Autonomy, Explicability, Lawfulness, and ethical use of technology). Correct any issues internally.\n"
         "   - Extract all relevant references related to the topic, ensuring that duplicates are removed and that the extraction follows the RDA standard while respecting copyright and author rights.\n\n"
         "Now, construct your final answer using the following format:\n"
-        "   1. Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of (current date).\"\n"
-        "   2. Provide the answer text, integrating citations in the text using the format [n] (where [n] is the reference number).\n"
+        "   1. Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of <CURRENT_DATE>.\" \n"
+        "      - Replace <CURRENT_DATE> with the actual current date at the time of execution.\n"
+        "   2. Provide the answer text, integrating citations using the format [n] (where [n] is the reference number). Ensure that each citation is placed directly next to the portion of text it supports, and avoid appending all references after every sentence.\n"
         "   3. Include the sentence: \"If you have any further questions or would like to delve deeper into the topic, feel free to ask.\"\n"
-        "   4. List the references with proper numbering and formatting. The reference titles must be displayed in italics using Markdown formatting (e.g., *Title*), with each reference on a new line. Use the references extracted in your internal process.\n"
+        "   4. List the references on separate lines with proper numbering and formatting. The reference titles must be displayed in italics using Markdown formatting (e.g., *Title*).\n"
         "   5. Append a section titled \"Trustworthiness engine:\" where you briefly explain any corrections made during your internal ethical analysis (include this section only if any corrections were performed).\n\n"
+        "Important formatting instructions:\n"
+        "   - Use actual newline characters (\\n) for line breaks instead of HTML tags.\n"
+        "   - Use Markdown syntax (e.g., *italic text*) to render text in italics.\n\n"
         "Only output the final answer following the format above, without disclosing any details of the internal processes."
     )
-
    
     if request.method == 'POST':
         question = request.form['question']
