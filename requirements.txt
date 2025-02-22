@@ -6,3 +6,4 @@ weaviate-client==3.26.7
 requests>=2.32.2,<3.0.0
 azure-identity==1.16.0
 azure-keyvault-secrets==4.6.0
+Markdown>=3.4.4
