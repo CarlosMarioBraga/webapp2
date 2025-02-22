@@ -8,6 +8,8 @@ import weaviate
 import requests
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
+import markdown
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -249,9 +251,15 @@ def index():
 
         # Imprimir la respuesta generada
         logger.info("Iniciamos la impresión de las preguntas")
+
+        # Reemplazar el marcador <CURRENT_DATE> por la fecha actual
+        current_date = datetime.now().strftime("%Y-%m-%d")
+        response2 = response2.replace("<CURRENT_DATE>", current_date)
+
         answer1 = response1.choices[0].message.content
         answer2 = response2.choices[0].message.content
 
+        
         '''
         # Almacenar la salida de Weaviate en answer1
         answer1 = prompt
@@ -266,6 +274,7 @@ def index():
         <title>TRUSTWORTHY RAG</title>
     </head>
     <body>
+        {{ content|safe }}
         <h1>TRUSTWORTHY RAG</h1>
         <form method="post">
             <label for="question">Write your question:</label><br><br>
