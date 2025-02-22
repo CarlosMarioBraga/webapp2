@@ -114,6 +114,7 @@ def index():
     answer1 = None
     answer2 = None
     error = None
+    question = None
 
     # Mensaje del sistema con instrucciones detalladas y secuenciales
 
@@ -255,7 +256,7 @@ def index():
         current_date = datetime.now().strftime("%Y-%m-%d")
         
         answer1 = response1.choices[0].message.content
-        answer2 = response2.choices[0].message.content.replace("<CURRENT_DATE>", current_date)
+        answer2 = response2.choices[0].message.content.replace("<<CURRENT_DATE>>", current_date)
         answer1 = markdown.markdown(answer1, extensions=['extra', 'nl2br'])
         answer2 = markdown.markdown(answer2, extensions=['extra', 'nl2br'])
 
