@@ -254,10 +254,9 @@ def index():
 
         # Reemplazar el marcador <CURRENT_DATE> por la fecha actual
         current_date = datetime.now().strftime("%Y-%m-%d")
-        response2 = response2.replace("<CURRENT_DATE>", current_date)
-
+        
         answer1 = response1.choices[0].message.content
-        answer2 = response2.choices[0].message.content
+        answer2 = response2.choices[0].message.content.replace("<CURRENT_DATE>", current_date)
 
         
         '''
@@ -274,7 +273,6 @@ def index():
         <title>TRUSTWORTHY RAG</title>
     </head>
     <body>
-        {{ content|safe }}
         <h1>TRUSTWORTHY RAG</h1>
         <form method="post">
             <label for="question">Write your question:</label><br><br>
