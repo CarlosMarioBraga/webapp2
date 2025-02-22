@@ -221,15 +221,15 @@ def index():
             value = int(question)
             if 1 <= value <= 10:
                 texts = {
-                    1: "How do potential organisms on Europa adapt to high radiation levels and extreme cold temperatures?",
-                    2: "What are the possible biological mechanisms for photosynthesis in low-light conditions on Europa?",
+                    1: "What are the primary producers in the hypothetical food chains of Europa's subsurface oceans?",
+                    2: "What are the main environmental conditions that potential life forms on Europa must adapt to?",
                     3: "What are the methods used to detect life in Europa's subsurface oceans?",
-                    4: "Question: What are the potential habitats in the depths of Europa's oceans?",
+                    4: "What are the potential habitats in the depths of Europa's oceans?",
                     5: "How do potential organisms on Europa adapt to high radiation levels and extreme cold temperatures?",
                     6: "What are the possible biological mechanisms for photosynthesis in low-light conditions on Europa?",
                     7: "What are the potential nutrient cycles in Europa's ecosystems and how do they support life?",
                     8: "How do potential symbiotic relationships on Europa contribute to the survival and diversity of life forms?",
-                    9: " What are the challenges and limitations in detecting life on Europa, and how do researchers overcome them?",
+                    9: "What are the challenges and limitations in detecting life on Europa, and how do researchers overcome them?",
                     10: "How does the potential genetic diversity of organisms on Europa relate to the research methods used to detect life, and what role does gender bias play in the research process?"
                 }
                 question = texts[value]
