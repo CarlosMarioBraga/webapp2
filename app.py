@@ -149,7 +149,7 @@ def index():
             # Realizar una consulta a Weaviate para obtener los chunks más cercanos
             logger.info("Lanzamos consulta a Weaviate")
             nearvector = {
-                "vector": embedding
+                "vector": embedding.tolist()
             }
             result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_near_vector(nearvector).with_limit(10).do()
             # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(nearvector).do()
