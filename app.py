@@ -138,7 +138,7 @@ def index():
    
     if request.method == 'POST':
         question = request.form['question']
-        '''
+        
         # Generar el embedding de la pregunta
         embedding = generar_embedding2(question)
         logger.info("Embedding Generado")
@@ -152,9 +152,9 @@ def index():
                 "vector": embedding,
                 "certainty": 0.7  # Ajusta este valor según tus necesidades
             }
-            #result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_near_vector(nearvector).do()
+            result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_near_vector(nearvector).do()
             # result = bbddclient.query.get("Chunk", ["content", "pageNumber", "embeddingModel", "embeddingDate"]).with_near_vector(nearvector).do()
-            result = bbddclient.query.get("Chunk",  ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_limit(100).do()
+            # result = bbddclient.query.get("Chunk",  ["content", "pageNumber", "embeddingModel", "embeddingDate", "title", "author", "publicationDate", "identifier",  "documentType", "language", "rights"]).with_limit(100).do()
             logger.info("Recibimos repuesta de weaviate e iniciamos la generación del prompt")          
             # Construir la variable prompt
             prompt = f"Question: {question}\n\nItems of relevant context:\n"
@@ -172,10 +172,6 @@ def index():
                 publication_date = chunk.get("publicationDate")
                 rights = chunk.get("rights")
 
-                #title = None
-                #author = None
-                #publication_date = None
-                #rights = None
                 prompt += f"- Relevant context {chunkNumber} : {content} (Page: {page_number}, Title: {title}, Author: {author}, Publication Date: {publication_date}, Embedding Date: {embedding_date}, Rights: {rights})\n"
                 chunkNumber = chunkNumber + 1
                 logger.info("Prompt Construido")
@@ -225,6 +221,10 @@ def index():
                 
         # Asignamos la variable prompt correspondiente
         prompt = prompts.get(value, prompt1)
+        '''
+
+        
+        '''
         # Enviar el prompt al modelo de OpenAI
         logger.info("Llamamos a openAI con la llamada standard")
         response1 = client.chat.completions.create(
@@ -268,10 +268,10 @@ def index():
         
         '''
         # Almacenar la salida de Weaviate en answer1
-        answer1 = prompt
+        answer1 = result
         # Almacenar el prompt construido en answer2
-        answer2 = None 
-        '''
+        answer2 = prompt 
+        
     return render_template_string('''
 <!doctype html>
 <html lang="en">
