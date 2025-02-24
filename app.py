@@ -233,8 +233,7 @@ def index():
                 n=1,
                 temperature=0.3
          )
-         '''   
-
+         
    	    # Enviar el prompt al modelo de OpenAI
         logger.info("Llamamos a openAI con la llamada Trust")
         response2 = client.chat.completions.create(
