@@ -121,7 +121,7 @@ def index():
     system_message = (
         "You are a highly reliable assistant. Follow the instructions below precisely to generate your final answer:\n\n"
         "Before constructing your final answer, perform the following internal processes without outputting any details:\n"
-        "   - Analyze the user prompt for compliance with ethical principles (Beneficence, Non-maleficence, Justice, Autonomy, Explicability, Lawfulness, and ethical use of technology). Correct any issues internally.\n"
+        "   - Analyze the user prompt for compliance with ethical principles (Beneficence, Non-maleficence, Justice, Autonomy, Explicability, Lawfulness, and ethical use of technology). In doing so, ensure that any content that may involve privacy issues (such as inadvertent inclusion of personal identifiers) or inappropriate gender representations is corrected or omitted. Apply any necessary corrections internally.\n"
         "   - Extract all relevant references from the provided context, ensuring that duplicates are removed and that the extraction follows the RDA standard while respecting copyright and author rights.\n\n"
         "Now, construct your final answer using the following format:\n"
         "   1. Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of 31-12-9999.\n"
@@ -134,6 +134,7 @@ def index():
         "   - Use Markdown syntax (e.g., *italic text*) to render text in italics.\n\n"
         "Only output the final answer following the format above, without disclosing any details of the internal processes."
     )
+
 
    
     if request.method == 'POST':
