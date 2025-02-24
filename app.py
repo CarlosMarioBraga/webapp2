@@ -238,7 +238,7 @@ def index():
         '''
 
         
-        
+        '''
         # Enviar el prompt al modelo de OpenAI
         logger.info("Llamamos a openAI con la llamada standard")
         response1 = client.chat.completions.create(
@@ -252,7 +252,7 @@ def index():
                 n=1,
                 temperature=0.3
          )
-
+         '''   
 
    	    # Enviar el prompt al modelo de OpenAI
         logger.info("Llamamos a openAI con la llamada Trust")
@@ -273,10 +273,10 @@ def index():
 
         # Reemplazar el marcador <CURRENT_DATE> por la fecha actual
         current_date = datetime.now().strftime("%Y-%m-%d")
-        
-        answer1 = response1.choices[0].message.content
+        answer1 = result
+        # answer1 = response1.choices[0].message.content
         answer2 = response2.choices[0].message.content.replace("31-12-9999", current_date)
-        answer1 = markdown.markdown(answer1, extensions=['extra', 'nl2br'])
+        # answer1 = markdown.markdown(answer1, extensions=['extra', 'nl2br'])
         answer2 = markdown.markdown(answer2, extensions=['extra', 'nl2br'])
 
         
