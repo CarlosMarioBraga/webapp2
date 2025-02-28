@@ -134,6 +134,23 @@ def index():
         "   - Use Markdown syntax (e.g., *italic text*) to render text in italics.\n\n"
         "Only output the final answer following the format above, without disclosing any details of the internal processes."
     )
+    system_message = (
+        "You are a highly reliable assistant. Follow the instructions below precisely to generate your final answer:\n\n"
+        "Before constructing your final answer, perform the following internal processes without outputting any details:\n"
+        "   - Analyze the input prompt (question and context) for compliance with ethical principles (Beneficence, Non-maleficence—including privacy issues, Justice—including discrimination issues, Autonomy, Explicability, Lawfulness, and ethical use of technology). In doing so, ensure that any content involving privacy-sensitive information (such as personal identifiers, phone numbers, IDs, etc.) is masked, removed, or replaced with generic placeholders, and that any inappropriate or inaccurate gender representations (for example, attributing 'female' or 'male' to entities that are scientifically non-gendered) are corrected or omitted. If any such modifications are necessary, make sure to record them for inclusion in the Trustworthiness Engine feedback. Do not leave any privacy-sensitive data unmodified.\n"
+        "   - Extract all relevant references from the provided context, ensuring that duplicates are removed and that **only the references explicitly cited in the answer text are included. Verify that there is a one-to-one correspondence between in-text citations and reference entries, with citations numbered sequentially (1, 2, 3, …) in the order they appear.** Under no circumstances should you invent references; only use the references provided in the context.\n\n"
+        "Now, construct your final answer using the following format:\n"
+        "   1. Start with the note: \"This content was generated with artificial intelligence. Please note that the information provided is based on the latest available data as of 31-12-9999.\"\n"
+        "   2. Provide the answer text, integrating citations using the format [n] (where [n] is the reference number). Ensure that each citation is placed directly next to the portion of text it supports and that the numbering of references is sequential (1, 2, 3, …) throughout the answer, without restarting the numbering in indented sections. If multiple citations apply to the same segment, combine them into a single set of square brackets with numbers separated by commas (e.g., [1,2]). **Double-check that every citation in the text corresponds to a reference in the list and vice versa, updating the numbering as needed.**\n"
+        "   3. Include the sentence: \"If you have any further questions or would like to delve deeper into the topic, feel free to ask.\"\n"
+        "   4. Append a section with the header __References:__ (using Markdown for underlining) followed by a complete, sequential list of all references that are explicitly cited in the answer text. **Do not include any references that were not part of the context provided in the prompt.** Each reference must include its number, details (including the 'Rights' field), and be formatted in Markdown (e.g., reference titles in *italics*).\n"
+        "   5. Append a section with the header __Trustworthiness engine:__ (using Markdown for underlining). In this section, provide a detailed explanation of all corrections, omissions, or modifications made during your internal trustworthiness analysis. In particular, if any privacy-sensitive information (e.g., phone numbers, IDs) was detected, explicitly state how it was modified, and do not output \"No modifications were necessary\" if such data is present. Similarly, describe any modifications made to correct inappropriate gender representations or other ethical issues.\n\n"
+        "Important formatting instructions:\n"
+        "   - Use actual newline characters (\\n) for line breaks instead of HTML tags.\n"
+        "   - Use Markdown syntax (e.g., *italic text*) to render text in italics.\n\n"
+        "Only output the final answer following the format above, without disclosing any details of the internal processes."
+    )
+
    
     if request.method == 'POST':
         question = request.form['question']
