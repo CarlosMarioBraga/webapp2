@@ -264,7 +264,7 @@ def index():
                     {  "role": "system",   "content": system_message},
                     {"role": "user", "content": prompt},
                 ],
-                max_tokens=1000,
+                max_tokens=1600,
                 n=1,
                 temperature=0.3
         )
